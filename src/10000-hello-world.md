@@ -38,7 +38,7 @@ use `go run`.
 :::
 
 
-```sh
+```bash
 $ go run hello-world.go
 hello world
 ```
@@ -56,7 +56,7 @@ binaries. We can do this using `go build`.
 :::
 
 
-```sh
+```bash
 $ go build hello-world.go
 $ ls
 hello-world	hello-world.go
@@ -74,7 +74,7 @@ We can then execute the built binary directly.
 :::
 
 
-```sh
+```bash
 $ ./hello-world
 hello world
 ```

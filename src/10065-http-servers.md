@@ -142,7 +142,7 @@ Run the server in the background.
 :::
 
 
-```sh
+```bash
 $ go run http-servers.go &
 ```
 
@@ -158,7 +158,7 @@ Access the `/hello` route.
 :::
 
 
-```sh
+```bash
 $ curl localhost:8090/hello
 hello
 ```

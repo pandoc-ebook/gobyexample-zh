@@ -88,7 +88,7 @@ apply them to a variadic function using
 ```
 
 
-```sh
+```bash
 $ go run variadic-functions.go 
 [1 2] 3
 [1 2 3] 6

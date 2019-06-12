@@ -67,7 +67,7 @@ receiving the 2 elements.
 ```
 
 
-```sh
+```bash
 $ go run range-over-channels.go
 one
 two

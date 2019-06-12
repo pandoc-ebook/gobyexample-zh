@@ -126,7 +126,7 @@ causing the program to print `interrupt` and then exit.
 :::
 
 
-```sh
+```bash
 $ go run signals.go
 awaiting signal
 ^C

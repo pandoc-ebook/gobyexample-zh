@@ -111,7 +111,7 @@ length, as desired.
 :::
 
 
-```sh
+```bash
 $ go run sorting-by-functions.go 
 [kiwi peach banana]
 ```

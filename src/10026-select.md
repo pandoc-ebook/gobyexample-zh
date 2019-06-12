@@ -105,7 +105,7 @@ expected.
 :::
 
 
-```sh
+```bash
 $ time go run select.go 
 received one
 received two
@@ -125,7 +125,7 @@ concurrently.
 :::
 
 
-```sh
+```bash
 real	0m2.245s
 ```
 

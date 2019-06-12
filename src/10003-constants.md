@@ -114,7 +114,7 @@ assignment or function call. For example, here
 ```
 
 
-```sh
+```bash
 $ go run constant.go 
 constant
 6e+11

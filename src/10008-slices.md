@@ -234,7 +234,7 @@ they are rendered similarly by `fmt.Println`.
 :::
 
 
-```sh
+```bash
 $ go run slices.go
 emp: [  ]
 set: [a b c]

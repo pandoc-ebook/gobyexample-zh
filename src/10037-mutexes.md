@@ -244,7 +244,7 @@ Running the program shows that we executed about
 :::
 
 
-```sh
+```bash
 $ go run mutexes.go
 readOps: 83285
 writeOps: 8320

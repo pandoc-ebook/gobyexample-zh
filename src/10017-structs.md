@@ -161,7 +161,7 @@ Structs are mutable.
 ```
 
 
-```sh
+```bash
 $ go run structs.go
 {Bob 20}
 {Alice 30}

@@ -86,7 +86,7 @@ for `FOO` that we set in the program, but that
 :::
 
 
-```sh
+```bash
 $ go run environment-variables.go
 FOO: 1
 BAR: 
@@ -105,7 +105,7 @@ particular machine.
 :::
 
 
-```sh
+```bash
 TERM_PROGRAM
 PATH
 SHELL
@@ -125,7 +125,7 @@ program picks that value up.
 :::
 
 
-```sh
+```bash
 $ BAR=2 go run environment-variables.go
 FOO: 1
 BAR: 2

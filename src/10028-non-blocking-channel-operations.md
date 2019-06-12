@@ -104,7 +104,7 @@ on both `messages` and `signals`.
 ```
 
 
-```sh
+```bash
 $ go run non-blocking-channel-operations.go 
 no message received
 no message sent

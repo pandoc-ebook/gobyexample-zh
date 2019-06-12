@@ -93,7 +93,7 @@ Print the first 5 lines of the response body.
 ```
 
 
-```sh
+```bash
 $ go run http-clients.go
 Response status: 200 OK
 <!DOCTYPE html>

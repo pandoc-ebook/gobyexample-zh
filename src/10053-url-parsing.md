@@ -174,7 +174,7 @@ pieces that we extracted.
 :::
 
 
-```sh
+```bash
 $ go run url-parsing.go 
 postgres
 user:pass

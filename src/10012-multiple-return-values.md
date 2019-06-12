@@ -82,7 +82,7 @@ use the blank identifier `_`.
 ```
 
 
-```sh
+```bash
 $ go run multiple-return-values.go
 3
 7

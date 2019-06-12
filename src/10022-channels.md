@@ -94,7 +94,7 @@ our channel.
 :::
 
 
-```sh
+```bash
 $ go run channels.go 
 ping
 ```

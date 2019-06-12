@@ -49,7 +49,7 @@ func main() {
 ```
 
 
-```sh
+```bash
 $ go run recursion.go 
 5040
 ```

@@ -136,7 +136,7 @@ all the workers notified they're done.
 ```
 
 
-```sh
+```bash
 $ go run waitgroups.go
 Worker 5 starting
 Worker 3 starting

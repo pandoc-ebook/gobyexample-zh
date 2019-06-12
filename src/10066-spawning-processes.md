@@ -177,7 +177,7 @@ as if we had run them directly from the command-line.
 :::
 
 
-```sh
+```bash
 $ go run spawning-processes.go 
 > date
 Wed Oct 10 09:53:11 PDT 2012

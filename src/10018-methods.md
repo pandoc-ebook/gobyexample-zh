@@ -104,7 +104,7 @@ Go会自动处理方法调用的值和指针之间的转换。您可能希望使
 ```
 
 
-```sh
+```bash
 $ go run methods.go 
 area:  50
 perim: 30

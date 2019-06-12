@@ -409,7 +409,7 @@ You can format+print to `io.Writers` other than
 ```
 
 
-```sh
+```bash
 $ go run string-formatting.go
 {1 2}
 {x:1 y:2}

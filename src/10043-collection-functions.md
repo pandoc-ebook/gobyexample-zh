@@ -223,7 +223,7 @@ type.
 ```
 
 
-```sh
+```bash
 $ go run collection-functions.go 
 2
 false

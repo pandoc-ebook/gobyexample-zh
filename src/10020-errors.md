@@ -189,7 +189,7 @@ assertion.
 ```
 
 
-```sh
+```bash
 $ go run errors.go
 f1 worked: 10
 f1 failed: can't work with 42

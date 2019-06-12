@@ -146,7 +146,7 @@ there are 3 workers operating concurrently.
 :::
 
 
-```sh
+```bash
 $ time go run worker-pools.go 
 worker 1 started  job 1
 worker 2 started  job 2

@@ -279,7 +279,7 @@ text with a given function.
 ```
 
 
-```sh
+```bash
 $ go run regular-expressions.go 
 true
 true

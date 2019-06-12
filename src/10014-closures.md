@@ -108,7 +108,7 @@ particular function, create and test a new one.
 ```
 
 
-```sh
+```bash
 $ go run closures.go
 1
 2

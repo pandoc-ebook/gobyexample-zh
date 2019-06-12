@@ -122,7 +122,7 @@ the memory address for that variable.
 :::
 
 
-```sh
+```bash
 $ go run pointers.go
 initial: 1
 zeroval: 1

@@ -170,7 +170,7 @@ be made relative to base.
 ```
 
 
-```sh
+```bash
 $ go run file-paths.go
 p: dir1/dir2/filename
 dir1/filename

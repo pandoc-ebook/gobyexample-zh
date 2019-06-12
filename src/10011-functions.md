@@ -102,7 +102,7 @@ Call a function just as you'd expect, with
 ```
 
 
-```sh
+```bash
 $ go run functions.go 
 1+2 = 3
 1+2+3 = 6

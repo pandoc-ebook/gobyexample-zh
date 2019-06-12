@@ -157,7 +157,7 @@ binary directly.
 :::
 
 
-```sh
+```bash
 $ go build command-line-flags.go
 ```
 
@@ -174,7 +174,7 @@ all flags.
 :::
 
 
-```sh
+```bash
 $ ./command-line-flags -word=opt -numb=7 -fork -svar=flag
 word: opt
 numb: 7
@@ -196,7 +196,7 @@ their default values.
 :::
 
 
-```sh
+```bash
 $ ./command-line-flags -word=opt
 word: opt
 numb: 42
@@ -218,7 +218,7 @@ any flags.
 :::
 
 
-```sh
+```bash
 $ ./command-line-flags -word=opt a1 a2 a3
 word: opt
 ...
@@ -239,7 +239,7 @@ will be interpreted as positional arguments).
 :::
 
 
-```sh
+```bash
 $ ./command-line-flags -word=opt a1 a2 a3 -numb=7
 word: opt
 numb: 42
@@ -261,7 +261,7 @@ generated help text for the command-line program.
 :::
 
 
-```sh
+```bash
 $ ./command-line-flags -h
 Usage of ./command-line-flags:
   -fork=false: a bool
@@ -284,7 +284,7 @@ and show the help text again.
 :::
 
 
-```sh
+```bash
 $ ./command-line-flags -wat
 flag provided but not defined: -wat
 Usage of ./command-line-flags:

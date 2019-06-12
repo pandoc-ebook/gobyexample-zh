@@ -115,7 +115,7 @@ initializing a variable, e.g. for
 ```
 
 
-```sh
+```bash
 $ go run variables.go
 initial
 1 2

@@ -96,7 +96,7 @@ slices and `true` as the result of our `AreSorted` test.
 :::
 
 
-```sh
+```bash
 $ go run sorting.go
 Strings: [a b c]
 Ints:    [2 4 7]

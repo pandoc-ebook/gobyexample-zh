@@ -148,7 +148,7 @@ Parse functions return an error on bad input.
 ```
 
 
-```sh
+```bash
 $ go run number-parsing.go 
 1.234
 123

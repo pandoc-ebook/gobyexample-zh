@@ -79,7 +79,7 @@ build a binary with `go build` first.
 :::
 
 
-```sh
+```bash
 $ go build command-line-arguments.go
 $ ./command-line-arguments a b c d
 [./command-line-arguments a b c d]       

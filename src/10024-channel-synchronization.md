@@ -102,7 +102,7 @@ worker on the channel.
 ```
 
 
-```sh
+```bash
 $ go run channel-synchronization.go      
 working...done                  
 ```

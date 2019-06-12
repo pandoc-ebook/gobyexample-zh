@@ -132,7 +132,7 @@ but they both decode to the original string as desired.
 :::
 
 
-```sh
+```bash
 $ go run base64-encoding.go
 YWJjMTIzIT8kKiYoKSctPUB+
 abc123!?$*&()'-=@~

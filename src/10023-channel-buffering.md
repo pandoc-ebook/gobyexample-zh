@@ -82,7 +82,7 @@ Later we can receive these two values as usual.
 ```
 
 
-```sh
+```bash
 $ go run channel-buffering.go 
 buffered
 channel

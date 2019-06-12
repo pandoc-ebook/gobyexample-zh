@@ -115,7 +115,7 @@ out and the second succeeding.
 :::
 
 
-```sh
+```bash
 $ go run timeouts.go 
 timeout 1
 result 2

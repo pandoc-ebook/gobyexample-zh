@@ -187,7 +187,7 @@ Try running the file-writing code.
 :::
 
 
-```sh
+```bash
 $ go run writing-files.go 
 wrote 5 bytes
 wrote 7 bytes
@@ -206,7 +206,7 @@ Then check the contents of the written files.
 :::
 
 
-```sh
+```bash
 $ cat /tmp/dat1
 hello
 go

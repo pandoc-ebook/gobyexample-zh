@@ -99,7 +99,7 @@ in Go, but that the braces are required.
 :::
 
 
-```sh
+```bash
 $ go run if-else.go 
 7 is odd
 8 is divisible by 4

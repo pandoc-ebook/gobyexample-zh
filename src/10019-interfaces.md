@@ -156,7 +156,7 @@ these structs as arguments to `measure`.
 ```
 
 
-```sh
+```bash
 $ go run interfaces.go
 {3 4}
 12

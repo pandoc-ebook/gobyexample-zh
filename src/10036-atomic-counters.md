@@ -156,7 +156,7 @@ Running the program shows that we executed about
 :::
 
 
-```sh
+```bash
 $ go run atomic-counters.go
 ops: 41419
 ```

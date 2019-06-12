@@ -131,7 +131,7 @@ a human-readable hex format.
 :::
 
 
-```sh
+```bash
 $ go run sha1-hashes.go
 sha1 this string
 cf23df2207d99a74fbe169e3eba035e633b65d94

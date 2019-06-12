@@ -248,7 +248,7 @@ total operations.
 :::
 
 
-```sh
+```bash
 $ go run stateful-goroutines.go
 readOps: 71708
 writeOps: 7177

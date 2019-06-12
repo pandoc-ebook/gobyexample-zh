@@ -118,7 +118,7 @@ goroutines being run concurrently by the Go runtime.
 :::
 
 
-```sh
+```bash
 $ go run goroutines.go
 direct : 0
 direct : 1

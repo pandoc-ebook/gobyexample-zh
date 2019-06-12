@@ -138,7 +138,7 @@ have access to trailing positional arguments.
 ```
 
 
-```sh
+```bash
 $ go build command-line-subcommands.go 
 ```
 
@@ -154,7 +154,7 @@ First invoke the foo subcommand.
 :::
 
 
-```sh
+```bash
 $ ./command-line-subcommands foo -enable -name=joe a1 a2
 subcommand 'foo'
   enable: true
@@ -174,7 +174,7 @@ Now try bar.
 :::
 
 
-```sh
+```bash
 $ ./command-line-subcommands bar -level 8 a1
 subcommand 'bar'
   level: 8
@@ -193,7 +193,7 @@ But bar won't accept foo's flags.
 :::
 
 
-```sh
+```bash
 $ ./command-line-subcommands bar -enable a1
 flag provided but not defined: -enable
 Usage of bar:

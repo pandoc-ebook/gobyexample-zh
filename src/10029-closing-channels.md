@@ -119,7 +119,7 @@ we saw earlier.
 ```
 
 
-```sh
+```bash
 $ go run closing-channels.go 
 sent job 1
 received job 1

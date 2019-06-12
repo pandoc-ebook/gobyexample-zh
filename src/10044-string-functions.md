@@ -113,7 +113,7 @@ for more information.
 :::
 
 
-```sh
+```bash
 $ go run string-functions.go
 Contains:   true
 Count:      2

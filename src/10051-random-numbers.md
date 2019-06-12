@@ -148,7 +148,7 @@ produces the same sequence of random numbers.
 ```
 
 
-```sh
+```bash
 $ go run random-numbers.go
 81,87
 0.6645600532184904

@@ -77,7 +77,7 @@ Booleans, with boolean operators as you'd expect.
 ```
 
 
-```sh
+```bash
 $ go run values.go
 golang
 1+1 = 2

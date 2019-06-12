@@ -121,7 +121,7 @@ lowercase lines.
 :::
 
 
-```sh
+```bash
 $ echo 'hello'   > /tmp/lines
 $ echo 'filter' >> /tmp/lines
 ```
@@ -138,7 +138,7 @@ Then use the line filter to get uppercase lines.
 :::
 
 
-```sh
+```bash
 $ cat /tmp/lines | go run line-filters.go
 HELLO
 FILTER

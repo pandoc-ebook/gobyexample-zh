@@ -135,7 +135,7 @@ when printed with `fmt.Println`.
 :::
 
 
-```sh
+```bash
 $ go run arrays.go
 emp: [0 0 0 0 0]
 set: [0 0 0 0 100]
