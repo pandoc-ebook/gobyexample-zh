@@ -5,6 +5,7 @@ SRC="$DIR/src"
 TMP="$DIR/tmp"
 REVISION="$DIR/REVISION.txt"
 DIFF="$DIR/diff"
+TRANS=$DIR/tools/trans
 
 function mkDir() {
 	test -d $1 || mkdir $1
@@ -38,6 +39,18 @@ function checkType() {
 	echo "code" && return 0
 }
 
+function writeComment() {
+	fortrans=`echo "$comment" |sed 's/\\\n//g'`
+	zhcomment=`$TRANS -brief :zh "$fortrans"`
+	echo -e "::: {.en}$comment\n:::\n\n::: {.zh}\n" >> $markdown
+	echo -e "$zhcomment" >> $markdown
+	echo -e "\n:::\n\n" >> $markdown
+}
+
+function writeCode() {
+	echo -e "\`\`\`$lang$code\n\`\`\`\n\n" >> $markdown
+}
+
 function parse() {
 	lang=$1
 	s="$TMP/gobyexample/examples/$2/$2.$lang"
@@ -56,7 +69,7 @@ function parse() {
 				comment="$comment\n`echo \"$c\" |sed -r 's#^(\ |\t)*//\ ##g'|sed -r 's/^# //g'`"
 			else
 				current="code"
-				echo -e "::: {.en}$comment\n:::\n\n::: {.zh}\n\n:::\n\n" >> $markdown
+				writeComment
 				comment=""
 				code="$code\n$c"
 			fi
@@ -65,14 +78,14 @@ function parse() {
 				code="$code\n$c"
 			else
 				current="comment"
-				echo -e "\`\`\`$lang$code\n\`\`\`\n\n" >> $markdown
+				writeCode
 				code=""
 				comment="$comment\n`echo \"$c\" |sed -r 's#^(\ |\t)*//\ ##g'|sed -r 's/^# //g'`"
 			fi
 		fi
 	done < $s
-	[ "$comment"x != ""x ] && echo -e "::: {.en}$comment\n:::\n\n::: {.zh}\n\n:::\n\n" >> $markdown
-	[ "$code"x != ""x ] && echo -e "\`\`\`$lang$code\n\`\`\`\n\n" >> $markdown
+	[ "$comment"x != ""x ] && writeComment
+	[ "$code"x != ""x ] && writeCode
 }
 
 if [ "$1"x == "-d"x ];then
