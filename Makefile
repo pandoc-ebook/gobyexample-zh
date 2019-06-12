@@ -1,6 +1,7 @@
 COVER ?= R
 DEVICE ?= pc
 CJK ?= -V CJKmainfont:思源宋体 -V CJKoptions:BoldFont=思源黑体,ItalicFont=KaiTi
+SUBTITLE ?= -M subtitle:
 
 all: zhctex zhelegant enctex enelegant bothctex bothelegant
 zhctex:
@@ -8,9 +9,9 @@ zhctex:
 zhelegant:
 	panbook book --style=elegantbook -V device:$(DEVICE)
 enctex:
-	panbook book -V cover:$(COVER) -V device:$(DEVICE) -G ext-zh_en-lang:en -V lang:en
+	panbook book -V cover:$(COVER) -V device:$(DEVICE) -G ext-zh_en-lang:en -V lang:en $(SUBTITLE)
 enelegant:
-	panbook book --style=elegantbook -V cover:$(COVER) -V device:$(DEVICE) -G ext-zh_en-lang:en -V lang:en
+	panbook book --style=elegantbook -V cover:$(COVER) -V device:$(DEVICE) -G ext-zh_en-lang:en -V lang:en $(SUBTITLE)
 bothctex:
 	panbook book -V cover:$(COVER) -V device:$(DEVICE) -G ext-zh_en-lang:both
 bothelegant:
