@@ -1,11 +1,14 @@
 ---
 title: Go By Example
 subtitle: 中文翻译版
+version: bab32db-v0.1
 author:          # 作者（数组）
   - Mark McGranaghan
 date: \today     # 日期
 lof: false        # 是否生成插图列表页
 lot: false        # 是否生成表格列表页
+cover: images/cover.jpg
+logo: images/logo.png
 homepage: https://github.com/pandoc-ebook/gobyexample-zh
 publisher: PanBook       # epub用
 rights: © 2019 Mark McGranaghan, CC BY 3.0   # epub用
