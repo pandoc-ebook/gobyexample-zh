@@ -3389,7 +3389,7 @@ return HttpProtocol HttpHost "/translate_tts?ie=UTF-8&client=gtx"\
 "&tl=" tl "&q=" preprocess(text)
 }
 function googleWebTranslateUrl(uri, sl, tl, hl) {
-return "https://translate.google.com/translate?"\
+return "https://translate.google.cn/translate?"\
 "hl=" hl "&sl=" sl "&tl=" tl "&u=" uri
 }
 function googleTranslate(text, sl, tl, hl,

@@ -98,7 +98,8 @@ while read line;do
 	GODIR=`echo $line |tr -d "'"|tr ' /' '-' |tr '[A-Z]' '[a-z]' |sed -r 's/-+/-/g'`
 	md="$SRC/$n-$GODIR.md"
 	echo -e "\n# $line {.en}\n" > $md
-	echo -e "\n# $line {.zh}\n\n" >> $md
+	zhline=`$TRANS -b :zh "$line"`
+	echo -e "\n# $zhline {.zh}\n\n" >> $md
 	echo "init $GODIR"
 	parse go $GODIR $md
 	parse sh $GODIR $md
