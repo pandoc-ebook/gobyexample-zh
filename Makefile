@@ -27,7 +27,7 @@ release:
 upload:
 	ID=`curl -s -H "Authorization: token $$GITHUB_TOKEN" "https://api.github.com/repos/$(OWNER)/$(REPO)/releases/tags/$(TAG)" |grep '"id"' |head -n 1 |awk '{print $$2}' |tr -d ','`; echo "ID: $$ID";\
 	cd build/; \
-	for FILE in `ls $(REPO)-*.pdf` $(REPO).epub;do \
+	for FILE in `ls $(REPO)-*.pdf`;do \
 		echo $$FILE;\
 		curl -H "Authorization: token $$GITHUB_TOKEN" -H "Content-Type: $$(file -b --mime-type $$FILE)" "https://uploads.github.com/repos/$(OWNER)/$(REPO)/releases/$$ID/assets?name=$$(basename $$FILE)" --data-binary @$$FILE; echo; \
 	done
