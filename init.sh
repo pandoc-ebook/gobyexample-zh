@@ -34,7 +34,7 @@ n=10000
 
 function checkType() {
 	echo "$1" |grep "^#" &>/dev/null && echo "comment" && return 0
-	echo "$1" |grep -E "^\ *//\ " &>/dev/null && echo "comment" && return 0
+	echo "$1" |grep -E "//\ " &>/dev/null && echo "comment" && return 0
 	echo "code" && return 0
 }
 
@@ -46,10 +46,14 @@ function parse() {
 	code=""
 	first=`head -n 1 $s`
 	current=`checkType "$first"`
+
+	# IFS see https://stackoverflow.com/questions/7314044/use-bash-to-read-line-by-line-and-keep-space
+	IFS=''
 	while read c;do
+		[ "$c"x == ""x ] && continue
 		if [ $current == "comment" ];then
 			if [ `checkType "$c"` == "comment" ];then
-				comment="$comment\n`echo $c |sed -r 's|^\ *//\ ||g'|sed -r 's/^# //g'`"
+				comment="$comment\n`echo \"$c\" |sed -r 's#^(\ |\t)*//\ ##g'|sed -r 's/^# //g'`"
 			else
 				current="code"
 				echo -e "::: {.en}$comment\n:::\n\n::: {.zh}\n\n:::\n\n" >> $markdown
@@ -63,7 +67,7 @@ function parse() {
 				current="comment"
 				echo -e "\`\`\`$lang$code\n\`\`\`\n\n" >> $markdown
 				code=""
-				comment="$comment\n`echo $c |sed -r 's|^\ *//\ ||g'|sed -r 's/^# //g'`"
+				comment="$comment\n`echo \"$c\" |sed -r 's#^(\ |\t)*//\ ##g'|sed -r 's/^# //g'`"
 			fi
 		fi
 	done < $s
