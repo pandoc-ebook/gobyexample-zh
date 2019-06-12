@@ -2,6 +2,7 @@ COVER ?= R
 DEVICE ?= pc
 CJK ?= -V CJKmainfont:思源宋体 -V CJKoptions:BoldFont=思源黑体,ItalicFont=KaiTi
 SUBTITLE ?= -M subtitle:
+HIGHLIGHT ?= --highlight-style=tango
 
 OWNER ?= pandoc-ebook
 REPO ?= gobyexample-zh
@@ -9,11 +10,14 @@ TAG ?= $(shell git rev-parse --short HEAD)
 
 all: zhelegant enelegant bothelegant
 zhelegant:
-	panbook book --style=elegantbook -V device:$(DEVICE)
+	panbook book --style=elegantbook -V device:$(DEVICE) $(HIGHLIGHT)
+	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-$(TAG).pdf
 enelegant:
-	panbook book --style=elegantbook -V cover:$(COVER) -V device:$(DEVICE) -G ext-zh_en-lang:en -V lang:en $(SUBTITLE)
+	panbook book --style=elegantbook -V device:$(DEVICE) -G ext-zh_en-lang:en -V lang:en $(SUBTITLE) $(HIGHLIGHT)
+	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-en-$(TAG).pdf
 bothelegant:
-	panbook book --style=elegantbook -V cover:$(COVER) -V device:$(DEVICE) -G ext-zh_en-lang:both
+	panbook book --style=elegantbook -V device:$(DEVICE) -G ext-zh_en-lang:both $(HIGHLIGHT)
+	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh_en-$(TAG).pdf
 
 up: release upload
 release:
