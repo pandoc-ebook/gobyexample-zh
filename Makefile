@@ -14,10 +14,10 @@ zhelegant:
 	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-$(TAG).pdf
 enelegant:
 	panbook book --style=elegantbook -V device:$(DEVICE) -G ext-zh_en-lang:en -V lang:en $(SUBTITLE) $(HIGHLIGHT)
-	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-en-$(TAG).pdf
+	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-en-$(TAG).pdf
 bothelegant:
 	panbook book --style=elegantbook -V device:$(DEVICE) -G ext-zh_en-lang:both $(HIGHLIGHT)
-	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh_en-$(TAG).pdf
+	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-zh_en-$(TAG).pdf
 
 up: release upload
 release:
