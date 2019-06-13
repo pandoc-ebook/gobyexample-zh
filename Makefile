@@ -8,7 +8,7 @@ OWNER ?= pandoc-ebook
 REPO ?= gobyexample-zh
 TAG ?= $(shell git rev-parse --short HEAD)
 
-all: zhelegant enelegant bothelegant
+all: zhelegant enelegant bothelegant clean
 zhelegant:
 	panbook book --style=elegantbook -V device:$(DEVICE) $(HIGHLIGHT)
 	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-$(TAG).pdf
