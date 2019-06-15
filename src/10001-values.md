@@ -1,9 +1,7 @@
 
 # Values {.en}
 
-
 # 值 {.zh}
-
 
 ::: {.en}
 Go has various value types including strings,
@@ -13,10 +11,9 @@ basic examples.
 
 ::: {.zh}
 
-Go有各种值类型，包括字符串，整数，浮点数，布尔值等。这里有一些基本的例子。
+Go 有各种值类型，包括字符串，整数，浮点数，布尔值等。这里有一些基本的例子。
 
 :::
-
 
 ```go
 package main
@@ -24,22 +21,19 @@ import "fmt"
 func main() {
 ```
 
-
 ::: {.en}
 Strings, which can be added together with `+`.
 :::
 
 ::: {.zh}
 
-字符串，可以与`+`一起添加。
+字符串可以用`+`连接。
 
 :::
-
 
 ```go
 	fmt.Println("go" + "lang")
 ```
-
 
 ::: {.en}
 Integers and floats.
@@ -51,12 +45,10 @@ Integers and floats.
 
 :::
 
-
 ```go
 	fmt.Println("1+1 =", 1+1)
 	fmt.Println("7.0/3.0 =", 7.0/3.0)
 ```
-
 
 ::: {.en}
 Booleans, with boolean operators as you'd expect.
@@ -64,10 +56,9 @@ Booleans, with boolean operators as you'd expect.
 
 ::: {.zh}
 
-布尔运算符，你可以期待布尔运算符。
+布尔值，使用布尔运算符。
 
 :::
-
 
 ```go
 	fmt.Println(true && false)
@@ -75,7 +66,6 @@ Booleans, with boolean operators as you'd expect.
 	fmt.Println(!true)
 }
 ```
-
 
 ```bash
 $ go run values.go
@@ -86,5 +76,3 @@ false
 true
 false
 ```
-
-
