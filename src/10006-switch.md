@@ -1,9 +1,7 @@
 
 # Switch {.en}
 
-
-# 开关 {.zh}
-
+# Switch 语句 {.zh}
 
 ::: {.en}
 _Switch statements_ express conditionals across many
@@ -12,10 +10,9 @@ branches.
 
 ::: {.zh}
 
-_切换语句_表达多个分支的条件。
+_Switch_ 语句用于多个分支的条件。
 
 :::
-
 
 ```go
 package main
@@ -24,17 +21,15 @@ import "time"
 func main() {
 ```
 
-
 ::: {.en}
 Here's a basic `switch`.
 :::
 
 ::: {.zh}
 
-这是一个基本的`switch`。
+一个基本的 `switch`。
 
 :::
-
 
 ```go
 	i := 2
@@ -49,7 +44,6 @@ Here's a basic `switch`.
 	}
 ```
 
-
 ::: {.en}
 You can use commas to separate multiple expressions
 in the same `case` statement. We use the optional
@@ -58,10 +52,9 @@ in the same `case` statement. We use the optional
 
 ::: {.zh}
 
-您可以使用逗号分隔同一`case`语句中的多个表达式。我们在这个例子中也使用了可选的`default`案例。
+您可以使用逗号分隔同一 `case` 语句中的多个表达式。我们在这个例子中也使用了可选的 `default` 分支。
 
 :::
-
 
 ```go
 	switch time.Now().Weekday() {
@@ -72,7 +65,6 @@ in the same `case` statement. We use the optional
 	}
 ```
 
-
 ::: {.en}
 `switch` without an expression is an alternate way
 to express if/else logic. Here we also show how the
@@ -81,10 +73,9 @@ to express if/else logic. Here we also show how the
 
 ::: {.zh}
 
-没有表达式的`switch`是表达if / else逻辑的另一种方式。这里我们还展示了`case`表达式如何可以是非常量。
+没有表达式的 `switch` 是表达 if / else 逻辑的另一种方式。这里我们还展示了 `case` 表达式也可以不使用常量。
 
 :::
-
 
 ```go
 	t := time.Now()
@@ -96,7 +87,6 @@ to express if/else logic. Here we also show how the
 	}
 ```
 
-
 ::: {.en}
 A type `switch` compares types instead of values.  You
 can use this to discover the type of an interface
@@ -106,10 +96,9 @@ type corresponding to its clause.
 
 ::: {.zh}
 
-类型`switch`比较类型而不是值。您可以使用它来发现interfacevalue的类型。在这个例子中，变量`t`将具有与其子句对应的类型。
+类型开关（`type switch`） 比较类型而非值。可以使用它来发现接口值的类型。在这个例子中，变量 `t` 在每个分支中会有相应的类型。
 
 :::
-
 
 ```go
 	whatAmI := func(i interface{}) {
@@ -128,7 +117,6 @@ type corresponding to its clause.
 }
 ```
 
-
 ```bash
 $ go run switch.go 
 Write 2 as two
@@ -138,5 +126,3 @@ I'm a bool
 I'm an int
 Don't know type string
 ```
-
-
