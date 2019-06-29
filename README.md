@@ -4,6 +4,6 @@
 
 最新版本下载：
 
-- [gobyexample-zh-zh-latest.pdf](https://panbook.annhe.net/pub/gobyexample-zh-latest.pdf)
+- [gobyexample-zh-latest.pdf](https://panbook.annhe.net/pub/gobyexample-zh-latest.pdf)
 - [gobyexample-zh-en-latest.pdf](https://panbook.annhe.net/pub/gobyexample-zh-en-latest.pdf)
 - [gobyexample-zh-zh_en-latest.pdf](https://panbook.annhe.net/pub/gobyexample-zh-zh_en-latest.pdf)
