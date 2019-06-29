@@ -1,4 +1,5 @@
 # gobyexample-zh
+[![Build Status](https://ci.annhe.net/api/badges/pandoc-ebook/gobyexample-zh/status.svg)](https://ci.annhe.net/pandoc-ebook/gobyexample-zh)
 
 点击 [release](https://github.com/pandoc-ebook/gobyexample-zh/releases) 下载电子书
 
