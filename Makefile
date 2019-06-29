@@ -6,7 +6,7 @@ HIGHLIGHT ?= --highlight-style=tango
 
 OWNER ?= pandoc-ebook
 REPO ?= gobyexample-zh
-TAG ?= $(shell git rev-parse --short HEAD)
+TAG ?= $(shell git describe HEAD --tags --exact-match 2>/dev/null || echo "latest")
 
 all: zhelegant enelegant bothelegant clean
 zhelegant:
