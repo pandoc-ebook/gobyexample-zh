@@ -3,6 +3,7 @@ DEVICE ?= pc
 CJK ?= -V CJKmainfont:思源宋体 -V CJKoptions:BoldFont=思源黑体,ItalicFont=KaiTi
 SUBTITLE ?= -M subtitle:
 HIGHLIGHT ?= --highlight-style=tango
+DEBUG ?=
 
 OWNER ?= pandoc-ebook
 REPO ?= gobyexample-zh
