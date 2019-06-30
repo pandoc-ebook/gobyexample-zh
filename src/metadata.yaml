@@ -1,7 +1,7 @@
 ---
 title: Go By Example
 subtitle: 中文翻译版
-version: bab32db-v0.1
+version: __VERSION__
 author:          # 作者（数组）
   - Mark McGranaghan
 date: \today     # 日期

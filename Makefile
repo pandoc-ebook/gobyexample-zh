@@ -10,13 +10,17 @@ REPO ?= gobyexample-zh
 TAG ?= $(shell git describe HEAD --tags --exact-match 2>/dev/null || echo "latest")
 
 all: zhelegant enelegant bothelegant clean
-zhelegant:
+
+VERSION ?= $(shell git describe)
+version:
+	sed -i "s/__VERSION__/$(VERSION)/g" build/metadata.yaml
+zhelegant: version
 	panbook book --style=elegantbook -V device:$(DEVICE) $(HIGHLIGHT)
 	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-$(TAG).pdf
-enelegant:
+enelegant: version
 	panbook book --style=elegantbook -V device:$(DEVICE) -G ext-zh_en-lang:en -V lang:en $(SUBTITLE) $(HIGHLIGHT)
 	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-en-$(TAG).pdf
-bothelegant:
+bothelegant: version
 	panbook book --style=elegantbook -V device:$(DEVICE) -G ext-zh_en-lang:both $(HIGHLIGHT)
 	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-zh_en-$(TAG).pdf
 
