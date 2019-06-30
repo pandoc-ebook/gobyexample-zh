@@ -5,17 +5,17 @@ workspace:
   base: /book
   path: gobyexample-zh
 
+clone:
+  git:
+    image: plugins/git
+    tags: true
+    
 steps:
 - name: build
   image: panbook:latest
   pull: if-not-exists
   commands:
-  - echo "DRONE_BRANCH:$DRONE_BRANCH"
-  - echo "DRONE_COMMIT:$DRONE_COMMIT"
-  - echo "DRONE_TAG:$DRONE_TAG"
-  - echo "DRONE_COMMIT_MESSAGE:$DRONE_COMMIT_MESSAGE"
-  - echo "DRONE_COMMIT_SHA:$DRONE_COMMIT_SHA"
-  - echo "DRONE_COMMIT_REF:$DRONE_COMMIT_REF"
+  - DEBUG=-d make
  
 - name: publish
   image: annprog/rsync:latest
