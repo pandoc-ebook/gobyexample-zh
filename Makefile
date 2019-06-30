@@ -8,20 +8,18 @@ DEBUG ?=
 OWNER ?= pandoc-ebook
 REPO ?= gobyexample-zh
 TAG ?= $(shell git describe HEAD --tags --exact-match 2>/dev/null || echo "latest")
+VERSION ?= $(shell git describe)
 
 all: zhelegant enelegant bothelegant clean
 
-VERSION ?= $(shell git describe)
-version:
-	sed -i "s/__VERSION__/$(VERSION)/g" build/metadata.yaml
-zhelegant: version
-	panbook book --style=elegantbook -V device:$(DEVICE) $(HIGHLIGHT)
+zhelegant:
+	panbook book --style=elegantbook -V device:$(DEVICE) $(HIGHLIGHT) -M version:$(VERSION)
 	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-$(TAG).pdf
-enelegant: version
-	panbook book --style=elegantbook -V device:$(DEVICE) -G ext-zh_en-lang:en -V lang:en $(SUBTITLE) $(HIGHLIGHT)
+enelegant:
+	panbook book --style=elegantbook -V device:$(DEVICE) -G ext-zh_en-lang:en -V lang:en $(SUBTITLE) $(HIGHLIGHT) -M version:$(VERSION)
 	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-en-$(TAG).pdf
-bothelegant: version
-	panbook book --style=elegantbook -V device:$(DEVICE) -G ext-zh_en-lang:both $(HIGHLIGHT)
+bothelegant:
+	panbook book --style=elegantbook -V device:$(DEVICE) -G ext-zh_en-lang:both $(HIGHLIGHT) -M version:$(VERSION)
 	mv build/gobyexample-zh-book-elegantbook-pc.pdf build/gobyexample-zh-zh_en-$(TAG).pdf
 
 up: release upload
