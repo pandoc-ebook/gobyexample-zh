@@ -10,6 +10,7 @@ steps:
   image: docker:git
   commands:
   - git fetch --tags
+  - git describe
 
 - name: build
   image: panbook:latest
