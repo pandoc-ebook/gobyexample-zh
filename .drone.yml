@@ -6,10 +6,8 @@ workspace:
   path: gobyexample-zh
 
 clone:
-  git:
-    image: plugins/git
-    tags: true
-    
+  tags: true
+
 steps:
 - name: build
   image: panbook:latest
