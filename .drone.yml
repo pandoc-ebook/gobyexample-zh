@@ -5,10 +5,12 @@ workspace:
   base: /book
   path: gobyexample-zh
 
-clone:
-  tags: true
-
 steps:
+- name: fetch
+  image: docker:git
+  commands:
+  - git fetch --tags
+
 - name: build
   image: panbook:latest
   pull: if-not-exists
