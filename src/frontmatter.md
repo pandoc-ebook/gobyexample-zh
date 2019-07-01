@@ -18,5 +18,5 @@ _Go by Example_ is a hands-on introduction to Go using annotated example program
 ::: {.zh}
 [Go](http://golang.org/) 是一种开源编程语言，旨在构建简单，快速，可靠的软件。
 
-_Go by Example_是使用带注释的示例程序对 Go 进行实际操作的介绍。查看第一个示例或浏览下面的完整列表。
+_Go by Example_ 是使用带注释的示例程序对 Go 进行实际操作的介绍。查看第一个示例或浏览下面的完整列表。
 :::
