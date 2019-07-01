@@ -1,9 +1,7 @@
 
 # Recursion {.en}
 
-
 # 递归 {.zh}
-
 
 ::: {.en}
 Go supports
@@ -13,16 +11,14 @@ Here's a classic factorial example.
 
 ::: {.zh}
 
-Go支持<a href="http://en.wikipedia.org/wiki/Recursion_(computer_science)"> <em>递归函数</ em> </a>。这是一个经典的因子示例。
+Go 支持 [*递归*](http://en.wikipedia.org/wiki/Recursion_%28computer_science%29)。这是一个经典的阶乘示例。
 
 :::
-
 
 ```go
 package main
 import "fmt"
 ```
-
 
 ::: {.en}
 This `fact` function calls itself until it reaches the
@@ -31,10 +27,9 @@ base case of `fact(0)`.
 
 ::: {.zh}
 
-这个`fact`函数调用自身，直到它达到`fact（0）`的基本情况。
+`fact` 函数在达到 `fact(0)` 之前一致调用自身。
 
 :::
-
 
 ```go
 func fact(n int) int {
@@ -48,10 +43,7 @@ func main() {
 }
 ```
 
-
 ```bash
 $ go run recursion.go 
 5040
 ```
-
-
