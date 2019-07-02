@@ -1,9 +1,7 @@
 
 # Select {.en}
 
-
-# 选择 {.zh}
-
+# 通道选择器 {.zh}
 
 ::: {.en}
 Go's _select_ lets you wait on multiple channel
@@ -13,10 +11,9 @@ select is a powerful feature of Go.
 
 ::: {.zh}
 
-Go的_select_让你等待多个通道。将goroutines和渠道与选择相结合是Go的一个强大功能。
+Go 的*通道选择器*让你可以同时等待多个通道操作。Go 协程和通道以及选择器的结合是 Go 的一个强大特性。
 
 :::
-
 
 ```go
 package main
@@ -25,23 +22,20 @@ import "fmt"
 func main() {
 ```
 
-
 ::: {.en}
 For our example we'll select across two channels.
 :::
 
 ::: {.zh}
 
-对于我们的示例，我们将选择两个通道。
+对于我们的示例，我们将在两个通道中选择。
 
 :::
-
 
 ```go
 	c1 := make(chan string)
 	c2 := make(chan string)
 ```
-
 
 ::: {.en}
 Each channel will receive a value after some amount
@@ -51,10 +45,9 @@ executing in concurrent goroutines.
 
 ::: {.zh}
 
-每个频道将在一段时间后收到一个值，以模拟例如阻止RPC操作在并发goroutine中执行。
+各个通道将在若干时间后接收一个值，这个用来模拟例如 并行的 Go 协程中阻塞的 RPC 操作
 
 :::
-
 
 ```go
 	go func() {
@@ -67,7 +60,6 @@ executing in concurrent goroutines.
 	}()
 ```
 
-
 ::: {.en}
 We'll use `select` to await both of these values
 simultaneously, printing each one as it arrives.
@@ -75,10 +67,9 @@ simultaneously, printing each one as it arrives.
 
 ::: {.zh}
 
-我们将使用`select`同时等待这两个值，并在它们到达时打印每个值。
+我们使用 select 关键字来同时等待这两个值，并打 印各自接收到的值。
 
 :::
-
 
 ```go
 	for i := 0; i < 2; i++ {
@@ -92,7 +83,6 @@ simultaneously, printing each one as it arrives.
 }
 ```
 
-
 ::: {.en}
 We receive the values `"one"` and then `"two"` as
 expected.
@@ -100,17 +90,15 @@ expected.
 
 ::: {.zh}
 
-我们收到的值是“一个”，然后是“两个”`asexpected。
+我们首先接收到值 "one"，然后就是预料中的 "two" 了。
 
 :::
-
 
 ```bash
 $ time go run select.go 
 received one
 received two
 ```
-
 
 ::: {.en}
 Note that the total execution time is only ~2 seconds
@@ -120,13 +108,10 @@ concurrently.
 
 ::: {.zh}
 
-请注意，总执行时间仅为约2秒，因为1秒和2秒的“睡眠”同时执行。
+注意从第一次和第二次 Sleeps 并发执行，总共仅运行了 两秒左右。
 
 :::
-
 
 ```bash
 real	0m2.245s
 ```
-
-
