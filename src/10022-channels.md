@@ -1,9 +1,7 @@
 
 # Channels {.en}
 
-
 # 通道 {.zh}
-
 
 ::: {.en}
 _Channels_ are the pipes that connect concurrent
@@ -14,17 +12,15 @@ goroutine.
 
 ::: {.zh}
 
-_Channels_是连接并发goroutine的管道。您可以将值从onegoroutine发送到通道，并将这些值接收到另一个goroutine中。
+通道 (Channels) 是连接多个 Go 协程的管道。你可以从一个 Go 协程 将值发送到通道，然后在别的 Go 协程中接收。
 
 :::
-
 
 ```go
 package main
 import "fmt"
 func main() {
 ```
-
 
 ::: {.en}
 Create a new channel with `make(chan val-type)`.
@@ -33,15 +29,13 @@ Channels are typed by the values they convey.
 
 ::: {.zh}
 
-使用`make（chan val-type）`创建一个新的通道。通过它们传达的值输入通道。
+使用 `make(chan val-type)` 创建一个新的通道。通道类型就是他们需要传递值的类型。
 
 :::
-
 
 ```go
 	messages := make(chan string)
 ```
-
 
 ::: {.en}
 _Send_ a value into a channel using the `channel <-`
@@ -51,15 +45,13 @@ channel we made above, from a new goroutine.
 
 ::: {.zh}
 
-_使用`channel <-`syntax将值发送到通道。在这里，我们将“ping”`发送到我们上面的`messages`channel，来自一个新的goroutine。
+使用 `channel <-` 语法 发送（send） 一个新的值到通道中。这里 我们在一个新的 Go 协程中发送 "ping" 到上面创建的 messages 通道中。
 
 :::
-
 
 ```go
 	go func() { messages <- "ping" }()
 ```
-
 
 ::: {.en}
 The `<-channel` syntax _receives_ a value from the
@@ -69,10 +61,9 @@ we sent above and print it out.
 
 ::: {.zh}
 
-`<-channel`语法_receives_来自通道的值。在这里，我们将收到上面发送的“ping”消息并打印出来。
+`<-channel`语法接收来自通道的值。在这里，我们将收到上面发送的 `ping` 消息并打印出来。
 
 :::
-
 
 ```go
 	msg := <-messages
@@ -80,25 +71,22 @@ we sent above and print it out.
 }
 ```
 
-
 ::: {.en}
 When we run the program the `"ping"` message is
-successfully passed from one goroutine to another via
+successfully passed from one goroutine to another via 
 our channel.
 :::
 
 ::: {.zh}
 
-当我们运行程序时，“ping”消息成功地从一个goroutine传递到另一个viaour通道。
+我们运行程序时，通过通道，消息 `ping` 成功地从一个 Go 协程传到 另一个中。
 
 :::
-
 
 ```bash
 $ go run channels.go 
 ping
 ```
-
 
 ::: {.en}
 By default sends and receives block until both the
@@ -109,8 +97,6 @@ message without having to use any other synchronization.
 
 ::: {.zh}
 
-默认情况下，发送和接收阻塞，直到这些接收器和接收器都准备就绪。这个属性允许我们在程序结束时等待“ping”消息，而不必使用任何其他同步。
+默认情况下，发送和接收是阻塞的，直到发送方和接收方都准备就绪。这个特性允许我们在程序结束时等待 `ping` 消息，而不必使用任何其他同步操作。
 
 :::
-
-
