@@ -1,9 +1,7 @@
 
 # Channel Buffering {.en}
 
-
-# 频道缓冲 {.zh}
-
+# 通道缓冲 {.zh}
 
 ::: {.en}
 By default channels are _unbuffered_, meaning that they
@@ -16,17 +14,15 @@ those values.
 
 ::: {.zh}
 
-默认情况下，通道是_unbuffered_，这意味着如果有相应的接收（`< -  chan`）准备接收到该值，它们将只接受发送（`chan <-`）。 _Buffered channels_接受有限数量的值，而没有相应的接收器的值。
+默认情况下，通道是无缓冲的，这意味着只有在对应的接收（`<-chan`）通道准备好接收时，才允许进行发送（`chan <-`）。 *可缓存通道*允许在没有对应接收方的情况下，缓存限定数量的值。
 
 :::
-
 
 ```go
 package main
 import "fmt"
 func main() {
 ```
-
 
 ::: {.en}
 Here we `make` a channel of strings buffering up to
@@ -35,15 +31,13 @@ Here we `make` a channel of strings buffering up to
 
 ::: {.zh}
 
-在这里，我们`make`是一个缓冲2个值的字符串通道。
+在这里，我们 `make` 了一个最多允许缓冲 2 个字符串值的通道。
 
 :::
-
 
 ```go
 	messages := make(chan string, 2)
 ```
-
 
 ::: {.en}
 Because this channel is buffered, we can send these
@@ -53,16 +47,14 @@ concurrent receive.
 
 ::: {.zh}
 
-由于此通道是缓冲的，因此我们可以将这些值发送到通道而无需相应的并发接收。
+因为这个通道是有缓冲区的，即使没有一个对应的并发接收 方，我们仍然可以发送这些值。
 
 :::
-
 
 ```go
 	messages <- "buffered"
 	messages <- "channel"
 ```
-
 
 ::: {.en}
 Later we can receive these two values as usual.
@@ -74,18 +66,13 @@ Later we can receive these two values as usual.
 
 :::
 
-
 ```go
-	fmt.Println(<-messages)
 	fmt.Println(<-messages)
 }
 ```
-
 
 ```bash
 $ go run channel-buffering.go 
 buffered
 channel
 ```
-
-
