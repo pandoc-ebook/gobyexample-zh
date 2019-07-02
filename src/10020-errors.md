@@ -1,9 +1,7 @@
 
 # Errors {.en}
 
-
-# 错误 {.zh}
-
+# 错误处理 {.zh}
 
 ::: {.en}
 In Go it's idiomatic to communicate errors via an
@@ -18,17 +16,15 @@ non-error tasks.
 
 ::: {.zh}
 
-在Go中，通过一个明确的，单独的返回值来传达错误是惯用的。这与Java和Ruby等语言中使用的异常以及有时在C中使用的重载单个结果/错误值形成对比.Go的方法使得很容易看到哪些函数返回错误并使用用于任何其他非错误任务的相同语言结构来处理它们。
+在 Go 中，通常用一个明确的，单独的返回值来传递错误信息。这与 Java 和 Ruby 等语言中使用的异常（exception）以及有时在 C 中使用的重载（overloaded）单返回/错误值有着明显不同。Go 的方法使得很容易看到哪些函数返回错误，并能像调用那些没有出错的函数一样调用。
 
 :::
-
 
 ```go
 package main
 import "errors"
 import "fmt"
 ```
-
 
 ::: {.en}
 By convention, errors are the last return value and
@@ -37,16 +33,14 @@ have type `error`, a built-in interface.
 
 ::: {.zh}
 
-按照惯例，错误是最后一个返回值，并且类型为`error`，一个内置接口。
+按照惯例，错误是最后一个返回值，并且类型为 `error`，一个内建的接口。
 
 :::
-
 
 ```go
 func f1(arg int) (int, error) {
 	if arg == 42 {
 ```
-
 
 ::: {.en}
 `errors.New` constructs a basic `error` value
@@ -55,16 +49,14 @@ with the given error message.
 
 ::: {.zh}
 
-`errors.New`用给定的错误消息构造一个基本的`error`值。
+`errors.New` 用给定的错误消息构造一个基本的 `error` 值。
 
 :::
-
 
 ```go
 		return -1, errors.New("can't work with 42")
 	}
 ```
-
 
 ::: {.en}
 A `nil` value in the error position indicates that
@@ -73,16 +65,14 @@ there was no error.
 
 ::: {.zh}
 
-错误位置中的“nil”值表示没有错误。
+返回错误值为 `nil` 表示没有错误。
 
 :::
-
 
 ```go
 	return arg + 3, nil
 }
 ```
-
 
 ::: {.en}
 It's possible to use custom types as `error`s by
@@ -93,10 +83,9 @@ to explicitly represent an argument error.
 
 ::: {.zh}
 
-通过对它们实现`Error（）`方法，可以使用自定义类型作为“错误”。以下是使用自定义类型显式表示参数错误的上述示例的变量。
+可以通过实现 `Error()` 方法来自定义 `error` 类型。以下是使用自定义错误类型显式表示上面示例中的参数错误。
 
 :::
-
 
 ```go
 type argError struct {
@@ -110,7 +99,6 @@ func f2(arg int) (int, error) {
 	if arg == 42 {
 ```
 
-
 ::: {.en}
 In this case we use `&argError` syntax to build
 a new struct, supplying values for the two
@@ -119,10 +107,9 @@ fields `arg` and `prob`.
 
 ::: {.zh}
 
-在这种情况下，我们使用`＆argError`语法来构建一个新结构，为twofields`arg`和`prob`提供值。
+在这个例子中，我们使用 `&argError` 语法来构建一个新结构体，为两个字段 `arg` 和 `prob` 提供值。
 
 :::
-
 
 ```go
 		return -1, &argError{arg, "can't work with it"}
@@ -131,7 +118,6 @@ fields `arg` and `prob`.
 }
 func main() {
 ```
-
 
 ::: {.en}
 The two loops below test out each of our
@@ -142,10 +128,9 @@ idiom in Go code.
 
 ::: {.zh}
 
-下面的两个循环测试每个返回错误的函数。请注意，在`if`行上使用aninline错误检查是Go代码中的一个常见问题。
+下面的两个循环测试每个返回错误的函数。请注意，在 `if` 行内的错误检查是 Go 中的普遍用法。
 
 :::
-
 
 ```go
 	for _, i := range []int{7, 42} {
@@ -164,7 +149,6 @@ idiom in Go code.
 	}
 ```
 
-
 ::: {.en}
 If you want to programmatically use the data in
 a custom error, you'll need to get the error as an
@@ -174,10 +158,9 @@ assertion.
 
 ::: {.zh}
 
-如果要以编程方式在自定义错误中使用数据，则需要通过typeassertion将错误作为自定义错误类型的实例。
+你如果想在程序中使用一个自定义错误类型中的数据，你 需要通过类型断言来得到这个错误类型的实例。
 
 :::
-
 
 ```go
 	_, e := f2(42)
@@ -187,7 +170,6 @@ assertion.
 	}
 }
 ```
-
 
 ```bash
 $ go run errors.go
@@ -199,7 +181,6 @@ f2 failed: 42 - can't work with it
 can't work with it
 ```
 
-
 ::: {.en}
 See this [great post](http://blog.golang.org/2011/07/error-handling-and-go.html)
 on the Go blog for more on error handling.
@@ -207,8 +188,6 @@ on the Go blog for more on error handling.
 
 ::: {.zh}
 
-有关错误处理的更多信息，请参阅Go博客上的[great post]（http://blog.golang.org/2011/07/error-handling-and-go.html）。
+有关错误处理的更多信息，请参阅 Go 博客上的这篇 [很棒的文章](http://blog.golang.org/2011/07/error-handling-and-go.html)。
 
 :::
-
-
