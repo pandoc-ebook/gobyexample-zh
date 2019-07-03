@@ -1,9 +1,7 @@
 
 # Non-Blocking Channel Operations {.en}
 
-
-# 非阻塞频道操作 {.zh}
-
+# 非阻塞通道操作 {.zh}
 
 ::: {.en}
 Basic sends and receives on channels are blocking.
@@ -14,10 +12,9 @@ non-blocking multi-way `select`s.
 
 ::: {.zh}
 
-通道上的基本发送和接收是阻塞的。但是，我们可以使用带有`default`子句的`select`来实现_non-blocking_发送，接收和偶数阻塞多路`select`s。
+常规的通过通道发送和接收数据是阻塞的。然而，我们可以 使用带一个 default 子句的 select 来实现非阻塞 的 发送、接收，甚至是非阻塞的多路 select。
 
 :::
-
 
 ```go
 package main
@@ -26,7 +23,6 @@ func main() {
 	messages := make(chan string)
 	signals := make(chan bool)
 ```
-
 
 ::: {.en}
 Here's a non-blocking receive. If a value is
@@ -37,10 +33,9 @@ it will immediately take the `default` case.
 
 ::: {.zh}
 
-这是一个非阻塞接收。如果`messages`上有一个值，则`select`将使用该值获取`<-messages``case`。如果notit将立即采用`default`情况。
+这里是一个非阻塞接收的例子。如果在 `messages` 中 存在，然后 `select` 将这个值带入 `<-messages case` 中。如果不是，就直接到 default 分支中。
 
 :::
-
 
 ```go
 	select {
@@ -51,7 +46,6 @@ it will immediately take the `default` case.
 	}
 ```
 
-
 ::: {.en}
 A non-blocking send works similarly. Here `msg`
 cannot be sent to the `messages` channel, because
@@ -61,10 +55,9 @@ Therefore the `default` case is selected.
 
 ::: {.zh}
 
-非阻塞发送的工作方式类似。这里`msg`不能发送到`messages`通道，因为通道没有缓冲区而且没有接收器。因此选择了`default` case。
+非阻塞发送的工作方式类似。这里 `msg` 不能发送到 `messages` 通道，因为通道没有缓冲区而且没有接收器。因此选择了 `default` 分支。
 
 :::
-
 
 ```go
 	msg := "hi"
@@ -76,7 +69,6 @@ Therefore the `default` case is selected.
 	}
 ```
 
-
 ::: {.en}
 We can use multiple `case`s above the `default`
 clause to implement a multi-way non-blocking
@@ -86,10 +78,9 @@ on both `messages` and `signals`.
 
 ::: {.zh}
 
-我们可以使用`default`clause上面的多个`case`s来实现多路非阻塞选择。在这里，我们尝试非阻塞接收“消息”和“信号”。
+我们可以使用 `default` 子句 上面的多个 `case` 来实现多路非阻塞选择。在这里，我们尝试非阻塞的接收 `messages` 和 `signals`。
 
 :::
-
 
 ```go
 	select {
@@ -103,12 +94,9 @@ on both `messages` and `signals`.
 }
 ```
 
-
 ```bash
 $ go run non-blocking-channel-operations.go 
 no message received
 no message sent
 no activity
 ```
-
-
