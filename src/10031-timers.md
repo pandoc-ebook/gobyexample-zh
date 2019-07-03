@@ -1,9 +1,7 @@
 
 # Timers {.en}
 
-
-# 计时器 {.zh}
-
+# 定时器 {.zh}
 
 ::: {.en}
 We often want to execute Go code at some point in the
@@ -15,10 +13,9 @@ at [tickers](tickers).
 
 ::: {.zh}
 
-我们经常希望在未来的某个时刻执行Go代码，或者在某个时间间隔重复执行Go代码。 Go的内置_timer_和_ticker_功能使这两项任务变得容易。我们首先会看到计时器，然后是[代码]（代码）。
+我们常常需要在后面一个时刻运行 Go 代码，或者在某段时间 间隔内重复运行。Go 的内置 定时器 和 打点器 特性让这 些很容易实现。我们将先学习定时器，然后再学习打点器。
 
 :::
-
 
 ```go
 package main
@@ -26,7 +23,6 @@ import "time"
 import "fmt"
 func main() {
 ```
-
 
 ::: {.en}
 Timers represent a single event in the future. You
@@ -37,15 +33,13 @@ time. This timer will wait 2 seconds.
 
 ::: {.zh}
 
-定时器代表未来的单个事件。您将计时器等待多长时间，并提供将在该时间通知的通道。此计时器将等待2秒钟。
+定时器表示在未来某一时刻的独立事件。你告诉定时器 需要等待的时间，然后它将提供一个用于通知的通道。 这里的定时器将等待 2 秒。
 
 :::
-
 
 ```go
 	timer1 := time.NewTimer(2 * time.Second)
 ```
-
 
 ::: {.en}
 The `<-timer1.C` blocks on the timer's channel `C`
@@ -55,16 +49,14 @@ expired.
 
 ::: {.zh}
 
-`<-timer1.C`在定时器的通道`C`上阻塞，直到它发送一个表示timerexpired的值。
+`<-timer1.C` 在定时器的通道 `C` 上阻塞，直到它发送一个表示 定时器失效 的值。
 
 :::
-
 
 ```go
 	<-timer1.C
 	fmt.Println("Timer 1 expired")
 ```
-
 
 ::: {.en}
 If you just wanted to wait, you could have used
@@ -75,10 +67,9 @@ Here's an example of that.
 
 ::: {.zh}
 
-如果你只是想等，你可以使用`time.Sleep`。计时器可能有用的一个原因是你可以在计时器到期之前取消计时器。这是一个例子。
+如果你需要的仅仅是单纯的等待，你需要使用 `time.Sleep`。 定时器是有用原因之一就是你可以在定时器失效之前，取消这个 定时器。这是一个例子
 
 :::
-
 
 ```go
 	timer2 := time.NewTimer(time.Second)
@@ -93,7 +84,6 @@ Here's an example of that.
 }
 ```
 
-
 ::: {.en}
 The first timer will expire ~2s after we start the
 program, but the second should be stopped before it has
@@ -102,15 +92,12 @@ a chance to expire.
 
 ::: {.zh}
 
-第一个计时器将在我们启动程序后约2秒到期，但第二个计时器应该在它有机会到期之前停止。
+第一个定时器将在程序开始后约 2s 失效，但是第二个在它 没失效之前就停止了。
 
 :::
-
 
 ```bash
 $ go run timers.go
 Timer 1 expired
 Timer 2 stopped
 ```
-
-
