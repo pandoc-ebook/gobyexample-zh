@@ -1,9 +1,7 @@
 
 # Timeouts {.en}
 
-
-# 超时 {.zh}
-
+# 超时处理 {.zh}
 
 ::: {.en}
 _Timeouts_ are important for programs that connect to
@@ -14,10 +12,9 @@ elegant thanks to channels and `select`.
 
 ::: {.zh}
 
-_Timeouts_对于连接到外部资源或需要boundexecution时间的程序非常重要。由于频道和“选择”，在Go中实现超时很容易。
+超时处理对于连接到外部资源或需要限制执行时间的程序非常重要。通过通道和通道选择器，在 Go 中实现超时很容易。
 
 :::
-
 
 ```go
 package main
@@ -25,7 +22,6 @@ import "time"
 import "fmt"
 func main() {
 ```
-
 
 ::: {.en}
 For our example, suppose we're executing an external
@@ -35,10 +31,9 @@ after 2s.
 
 ::: {.zh}
 
-对于我们的示例，假设我们正在执行一个externalcall，它在2s后在通道`c1`上返回其结果。
+对于我们的示例，假设我们正在执行一个外部调用，它在 2s 后在通道 `c1` 上返回其结果。
 
 :::
-
 
 ```go
 	c1 := make(chan string, 1)
@@ -47,7 +42,6 @@ after 2s.
 		c1 <- "result 1"
 	}()
 ```
-
 
 ::: {.en}
 Here's the `select` implementing a timeout.
@@ -60,10 +54,9 @@ if the operation takes more than the allowed 1s.
 
 ::: {.zh}
 
-这是实现超时的`select``res：= <-c1`等待结果，`<-Time.After`waits在超时1s后发送的值。由于`select`继续执行已准备好的第一个接收，因此我们将采用超时情况，如果操作超过允许的1。
+这是通道选择器实现超时的例子。`res := <-c1` 等待结果，`<-Time.After` 等待超时 时间 1 秒后发送的值。由于 select 默认处理第一个 已准备好的接收操作，如果这个操作超过了允许的 1 秒 的话，将会执行超时 case。
 
 :::
-
 
 ```go
 	select {
@@ -74,7 +67,6 @@ if the operation takes more than the allowed 1s.
 	}
 ```
 
-
 ::: {.en}
 If we allow a longer timeout of 3s, then the receive
 from `c2` will succeed and we'll print the result.
@@ -82,10 +74,9 @@ from `c2` will succeed and we'll print the result.
 
 ::: {.zh}
 
-如果我们允许更长的3s超时，那么来自`c2`的receive将成功，我们将打印结果。
+如果我们允许更长的 3s 超时，将会成功的从 c2 接收到值，并且打印出结果。
 
 :::
-
 
 ```go
 	c2 := make(chan string, 1)
@@ -102,7 +93,6 @@ from `c2` will succeed and we'll print the result.
 }
 ```
 
-
 ::: {.en}
 Running this program shows the first operation timing
 out and the second succeeding.
@@ -114,13 +104,11 @@ out and the second succeeding.
 
 :::
 
-
 ```bash
 $ go run timeouts.go 
 timeout 1
 result 2
 ```
-
 
 ::: {.en}
 Using this `select` timeout pattern requires
@@ -132,8 +120,6 @@ examples of this next: timers and tickers.
 
 ::: {.zh}
 
-使用此“select”超时模式需要通过通道传递结果。这是一个很好的例子，因为其他重要的Go功能都基于通道和`select`。我们将看看下一个示例：定时器和代码。
+使用这个 select 超时方式，需要使用通道传递结果。这对于 一般情况是个好的方式，因为其他重要的 Go 特性是基于通道和 select 的。接下来我们就要看到两个例子：timer 和 ticker。
 
 :::
-
-
