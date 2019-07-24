@@ -1,9 +1,7 @@
 
 # Worker Pools {.en}
 
-
-# 工人池 {.zh}
-
+# 工作池 {.zh}
 
 ::: {.en}
 In this example we'll look at how to implement
@@ -12,17 +10,15 @@ a _worker pool_ using goroutines and channels.
 
 ::: {.zh}
 
-在这个例子中，我们将看看如何使用goroutines和channels实现_worker pool_。
+在这个例子中，我们将看看如何使用 goroutines 和 channels 实现_worker pool_。
 
 :::
-
 
 ```go
 package main
 import "fmt"
 import "time"
 ```
-
 
 ::: {.en}
 Here's the worker, of which we'll run several
@@ -38,7 +34,6 @@ simulate an expensive task.
 
 :::
 
-
 ```go
 func worker(id int, jobs <-chan int, results chan<- int) {
 	for j := range jobs {
@@ -51,7 +46,6 @@ func worker(id int, jobs <-chan int, results chan<- int) {
 func main() {
 ```
 
-
 ::: {.en}
 In order to use our pool of workers we need to send
 them work and collect their results. We make 2
@@ -60,16 +54,14 @@ channels for this.
 
 ::: {.zh}
 
-为了使用我们的工人群，我们需要发送他们的工作并收集他们的结果。我们为此制作了2个频道。
+为了使用我们的工人群，我们需要发送他们的工作并收集他们的结果。我们为此制作了 2 个频道。
 
 :::
-
 
 ```go
 	jobs := make(chan int, 100)
 	results := make(chan int, 100)
 ```
-
 
 ::: {.en}
 This starts up 3 workers, initially blocked
@@ -78,17 +70,15 @@ because there are no jobs yet.
 
 ::: {.zh}
 
-这启动了3名工人，最初因为还没有工作而被封锁。
+这启动了 3 名工人，最初因为还没有工作而被封锁。
 
 :::
-
 
 ```go
 	for w := 1; w <= 3; w++ {
 		go worker(w, jobs, results)
 	}
 ```
-
 
 ::: {.en}
 Here we send 5 `jobs` and then `close` that
@@ -97,10 +87,9 @@ channel to indicate that's all the work we have.
 
 ::: {.zh}
 
-在这里，我们发送5个`jobs`然后'close` thatchannel来表示我们所有的工作。
+在这里，我们发送 5 个`jobs`然后'close` thatchannel 来表示我们所有的工作。
 
 :::
-
 
 ```go
 	for j := 1; j <= 5; j++ {
@@ -108,7 +97,6 @@ channel to indicate that's all the work we have.
 	}
 	close(jobs)
 ```
-
 
 ::: {.en}
 Finally we collect all the results of the work.
@@ -119,10 +107,9 @@ goroutines is to use a [WaitGroup](waitgroups).
 
 ::: {.zh}
 
-最后，我们收集了工作的所有结果。这也确保了工人goroutines已经完成。等待multiplegoroutines的另一种方法是使用[WaitGroup]（waitgroups）。
+最后，我们收集了工作的所有结果。这也确保了工人 goroutines 已经完成。等待 multiplegoroutines 的另一种方法是使用 [WaitGroup](waitgroups)。
 
 :::
-
 
 ```go
 	for a := 1; a <= 5; a++ {
@@ -130,7 +117,6 @@ goroutines is to use a [WaitGroup](waitgroups).
 	}
 }
 ```
-
 
 ::: {.en}
 Our running program shows the 5 jobs being executed by
@@ -141,10 +127,9 @@ there are 3 workers operating concurrently.
 
 ::: {.zh}
 
-我们的运行程序显示了各种工作人员正在执行的5个工作。该计划只需要大约2秒就可以完成大约5秒钟的工作，因为有3名工人兼职。
+我们的运行程序显示了各种工作人员正在执行的 5 个工作。该计划只需要大约 2 秒就可以完成大约 5 秒钟的工作，因为有 3 名工人兼职。
 
 :::
-
 
 ```bash
 $ time go run worker-pools.go 
@@ -160,5 +145,3 @@ worker 1 finished job 4
 worker 2 finished job 5
 real	0m2.358s
 ```
-
-
