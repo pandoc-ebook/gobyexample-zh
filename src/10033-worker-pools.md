@@ -10,7 +10,7 @@ a _worker pool_ using goroutines and channels.
 
 ::: {.zh}
 
-在这个例子中，我们将看看如何使用 goroutines 和 channels 实现_worker pool_。
+在这个例子中，我们将看看如何使用 Go 协程 和 通道 实现 工作池。
 
 :::
 
@@ -30,7 +30,7 @@ simulate an expensive task.
 
 ::: {.zh}
 
-这是工作者，我们将运行几个并发实例。这些工作人员将在“工作”频道上接收工作，并在“结果”上发送相应的结果。我们每个工作都会睡一秒钟来模拟一项昂贵的任务。
+这是我们将要在多个并发实例中支持的任务。这些执行者 将从 jobs 通道接收任务，并且通过 results 发送对应 的结果。我们将让每个任务间隔 1s 来模拟一个耗时的任务。
 
 :::
 
@@ -54,7 +54,7 @@ channels for this.
 
 ::: {.zh}
 
-为了使用我们的工人群，我们需要发送他们的工作并收集他们的结果。我们为此制作了 2 个频道。
+为了使用我们的工人池，需要发送他们的工作并收集他们的结果。为此我们需要 2 个通道。
 
 :::
 
@@ -70,7 +70,7 @@ because there are no jobs yet.
 
 ::: {.zh}
 
-这启动了 3 名工人，最初因为还没有工作而被封锁。
+这里启动了 3 个 worker，初始是阻塞的，因为 还没有传递任务。
 
 :::
 
@@ -87,7 +87,7 @@ channel to indicate that's all the work we have.
 
 ::: {.zh}
 
-在这里，我们发送 5 个`jobs`然后'close` thatchannel 来表示我们所有的工作。
+在这里，我们发送 5 个`jobs` 然后 `close` 这些通道来表示这些就是我们所有的任务了。
 
 :::
 
@@ -107,7 +107,7 @@ goroutines is to use a [WaitGroup](waitgroups).
 
 ::: {.zh}
 
-最后，我们收集了工作的所有结果。这也确保了工人 goroutines 已经完成。等待 multiplegoroutines 的另一种方法是使用 [WaitGroup](waitgroups)。
+最后，我们收集所有任务的返回值。这也确保了执行任务的 Go 协程已经完成。等待多个 Go 协程的另一种方法是使用 [WaitGroup](waitgroups)。
 
 :::
 
@@ -127,7 +127,7 @@ there are 3 workers operating concurrently.
 
 ::: {.zh}
 
-我们的运行程序显示了各种工作人员正在执行的 5 个工作。该计划只需要大约 2 秒就可以完成大约 5 秒钟的工作，因为有 3 名工人兼职。
+运行程序显示了 5 个任务被多个 worker 执行。该程序只需要大约 2 秒就可以完成原本需要 5 秒的工作，因为有 3 个 worker 并行执行。
 
 :::
 
